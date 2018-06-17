@@ -3,6 +3,10 @@ import React, { Component } from 'react'
 import axios from 'axios'
 
 class App extends Component {
+  state = {
+    name: '',
+    email: '',
+  }
   async componentDidMount () {
     try {
       const response = await axios.get('/healthcheck') // will return a promise and that is thenable
@@ -12,9 +16,39 @@ class App extends Component {
       console.log(error)
     }
   }
+  handleChange = (e) => {
+    const target = e.target;
+    const value = target.value;
+    const key = target.name;
+    const state = this.state;
+    state[key] = value;
+    this.setState({
+      ...state
+    })
+  }
+
+  login = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(`/login/${this.state.name}/${this.state.email}`) // will return a promise and that is thenable
+      // console.log('hello!') called blocking: this line will not run until line above is complete
+      console.log('you logged in okay', response.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   render () {
     return (
-      <div>Hello world.</div>
+      <div>
+        <form action='' onChange={this.handleChange} onSubmit={this.login}>
+          <label htmlFor='name'>Name</label>
+          <input type='text' id='name' name='name'/>
+          <label htmlFor='email'>Email</label>
+          <input type='email' id='email' name='email'/>
+          <input type="submit" value="login"/>
+        </form>
+      </div>
     )
   }
 }
