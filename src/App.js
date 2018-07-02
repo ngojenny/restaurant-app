@@ -8,13 +8,14 @@ class App extends Component {
     email: '',
   }
   async componentDidMount () {
-    try {
-      const response = await axios.get('/healthcheck') // will return a promise and that is thenable
-      // console.log('hello!') called blocking: this line will not run until line above is complete
-      console.log(response.data)
-    } catch (error) {
-      console.log(error)
-    }
+    // try {
+    //   const response = await axios.get('/healthcheck') // will return a promise and that is thenable
+    //   // console.log('hello!') called blocking: this line will not run until line above is complete
+    //   console.log(response.data)
+    // } catch (error) {
+    //   console.log(error)
+    // }
+    console.log('mounted');
   }
   handleChange = (e) => {
     const target = e.target;
@@ -40,7 +41,7 @@ class App extends Component {
 
   getUsers = async (e) => {
     try {
-      const response = await axios.get('users')
+      const response = await axios.get('/users')
       console.log('we getting all the user, aka emily', response)
     } catch (error) {
       console.log(error)
