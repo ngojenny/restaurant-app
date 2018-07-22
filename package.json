@@ -4,7 +4,9 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "config": "^1.30.0",
     "express": "^4.16.3",
+    "history": "^4.7.2",
     "mongoose": "^5.1.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -18,10 +20,12 @@
     "eject": "react-scripts eject",
     "server": "nodemon lib/server.js --ignore src/",
     "start": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
-    "seeds": "node lib/seeds/index.js"
+    "seeds": "node lib/seeds/index.js",
+    "heroku-postbuild": "cd src && npm install --only=dev && npm install && npm run build"
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
-    "nodemon": "^1.17.5"
+    "nodemon": "^1.17.5",
+    "react-router-dom": "^4.3.1"
   }
 }

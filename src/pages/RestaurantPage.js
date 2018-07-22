@@ -9,3 +9,5 @@ class RestaurantPage extends Component {
     )
   }
 }
+
+export default RestaurantPage
