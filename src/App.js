@@ -22,7 +22,7 @@ class App extends Component {
       <Router>
         <div>
           <Route path='/' exact component={LoginPage} />
-          <Route path='/groups' exact component={GroupsPage} />
+          <Route path='/groups/:userId' component={GroupsPage} />
         </div>
       </Router>
     )

@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import createHistory from 'history/createBrowserHistory' 
+// import createHistory from 'history/createBrowserHistory' 
 
-const history = createHistory()
+// const history = createHistory()
 
 class LoginPage extends Component {
   state = {
-    name: '',
     email: '',
+    password: '',
   }
 
   handleChange = (e) => {
@@ -29,8 +29,20 @@ class LoginPage extends Component {
     // } catch (error) {
     //   console.log(error)
     // }
-    history.push('/groups')
-    
+
+    try {
+      const response = await axios.post('/login', {
+        email: this.state.email,
+        password: this.state.password
+      })
+      console.log('response', response)
+      if(response) {
+        const userId = response.data._id
+        this.props.history.push(`/groups/${userId}`);
+      }
+    } catch(e) {
+      console.log(e, `no users/match`);
+    }
   }
 
   getUsers = async (e) => {
@@ -46,10 +58,10 @@ class LoginPage extends Component {
     return (
       <div>
         <form action='' onChange={this.handleChange} onSubmit={this.login}>
-          <label htmlFor='name'>Name</label>
-          <input type='text' id='name' name='name'/>
           <label htmlFor='email'>Email</label>
           <input type='email' id='email' name='email'/>
+          <label htmlFor='password'>Password</label>
+          <input type='password' id='password' name='password'/>
           <input type="submit" value="login"/>
         </form>
         <button onClick={this.getUsers}>Grab users</button>

@@ -8,9 +8,10 @@ class GroupsPage extends Component {
   }
 
   async componentDidMount() {
-    console.log('mounted')
-    const res = await axios.get('/groups')
-    const groups = res.data
+    console.log('mounted', this.props)
+    const res = await axios.get(`/groups/${this.props.match.params.userId}`)
+    console.log('res', res)
+    const groups = res.data.groups
     this.setState({
       groups
     })
