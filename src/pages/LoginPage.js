@@ -48,7 +48,6 @@ class LoginPage extends Component {
   getUsers = async (e) => {
     try {
       const response = await axios.get('/users')
-      console.log('we getting all the user, aka emily', response)
     } catch (error) {
       console.log(error)
     }
