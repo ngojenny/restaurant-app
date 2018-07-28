@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage'
 import GroupsPage from './pages/GroupsPage'
+import RestaurantsPage from './pages/RestaurantsPage'
 
 class App extends Component {
 
@@ -22,7 +23,8 @@ class App extends Component {
       <Router>
         <div>
           <Route path='/' exact component={LoginPage} />
-          <Route path='/groups/:userId' component={GroupsPage} />
+          <Route exact path='/groups/:userId' component={GroupsPage} />
+          <Route exact path='/groups/:userId/:groupId' component={RestaurantsPage} />
         </div>
       </Router>
     )

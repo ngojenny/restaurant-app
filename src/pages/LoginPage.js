@@ -38,7 +38,7 @@ class LoginPage extends Component {
       console.log('response', response)
       if(response) {
         const userId = response.data._id
-        this.props.history.push(`/groups/${userId}`);
+        this.props.history.push(`/groups/${userId}`)
       }
     } catch(e) {
       console.log(e, `no users/match`);
