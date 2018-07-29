@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-// import createHistory from 'history/createBrowserHistory' 
 
-// const history = createHistory()
 
 class LoginPage extends Component {
   state = {

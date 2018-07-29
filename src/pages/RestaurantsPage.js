@@ -19,16 +19,12 @@ class RestaurantsPage extends Component {
     })
   }
 
-  sendToIndividualRestaurant = () => {
-    console.log('gonna send ya')
-  }
-
   render() {
     console.log('restaurant', this.state)
     const { restaurants } = this.state
     return (
       <div>
-        {restaurants.map(restaurant => <RestaurantPreview key={restaurant._id} info={restaurant} sendToRestaurant={this.sendToIndividualRestaurant}/>)}
+        {restaurants.map(restaurant => <RestaurantPreview key={restaurant._id} info={restaurant} />)}
       </div>
     )
   }

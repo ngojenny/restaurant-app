@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class RestaurantPreview extends Component {
   render() {
     const { info } = this.props 
+    console.log('info', info)
     return (
-      <div className="card restaurant-page__card" onClick={(e) => this.props.sendToRestaurant(e)}>
+      <div className="card restaurant-page__card">
         <h3>{info.name}</h3>
         <div className="restaurant-page__ratings-price">
           <div className={`ratings-bar ratings-bar-${info.rating}`}>
@@ -34,6 +36,7 @@ class RestaurantPreview extends Component {
             {info.topPicks[0]}
           </p>
         </div>
+        <Link to={`restaurant/${info._id}`}>More details <i className="fas fa-chevron-right"></i></Link>
       </div>
     )
   }

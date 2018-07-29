@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import axios from 'axios'
 // import { Link } from 'react-router-dom'
-
+import Header from '../components/Header/Header'
 import Avatar from '../components/Avatar/Avatar'
 
 class GroupsPage extends Component {
@@ -32,20 +32,23 @@ class GroupsPage extends Component {
     const { groups } = this.state
     const { userId } = this.state 
     return (
-      <main className="groups-page">
-        <section href="#">
-          <div className="wrapper">
-            {groups.map(group => (
-              <div className="card groups-page__card" key={group._id} onClick={(e) => this.sendToIndividualGroup(e, userId, group._id)}>
-                <p className="heading-3">{group.name}</p>
-                {group.users.map((user, i) => {
-                  return <Avatar key={i} firstName={user.firstName} lastName={user.lastName}/>
-                })}
-              </div>
-            ))}
-          </div>
-        </section>
-      </main>
+      <Fragment>
+        <Header title='RestApp' />
+        <main className="groups-page">
+          <section href="#">
+            <div className="wrapper">
+              {groups.map(group => (
+                <div className="card groups-page__card" key={group._id} onClick={(e) => this.sendToIndividualGroup(e, userId, group._id)}>
+                  <p className="heading-3">{group.name}</p>
+                  {group.users.map((user, i) => {
+                    return <Avatar key={i} firstName={user.firstName} lastName={user.lastName}/>
+                  })}
+                </div>
+              ))}
+            </div>
+          </section>
+        </main>
+      </Fragment>
     )
   }
 }
